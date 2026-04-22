@@ -1058,4 +1058,45 @@ Telefono: ${tel}` : ''}
 })();
 </script>
 
+
+<!-- MUSICA: Harry's Wondrous World -->
+<script src="https://w.soundcloud.com/player/api.js"></script>
+<iframe id="sc-widget" 
+  allow="autoplay"
+  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1566861984&color=%23c9a84c&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"
+  style="position:fixed; width:0; height:0; border:0; bottom:0; right:0;">
+</iframe>
+<button onclick="toggleSC()" id="scBtn" style="
+  position:fixed; bottom:20px; right:20px; z-index:9999;
+  background:rgba(0,30,10,0.8);
+  border:1px solid rgba(201,168,76,0.5);
+  color:#c9a84c;
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  letter-spacing:2px;
+  padding:8px 16px;
+  cursor:pointer;
+  border-radius:3px;
+  text-transform:uppercase;
+">&#9834; Música</button>
+<script>
+var scMuted = false;
+window.addEventListener('load', function() {
+  var widget = SC.Widget(document.getElementById('sc-widget'));
+  window._scWidget = widget;
+});
+function toggleSC() {
+  if (!window._scWidget) return;
+  if (scMuted) {
+    window._scWidget.setVolume(80);
+    document.getElementById('scBtn').innerHTML = '&#9834; Música';
+    scMuted = false;
+  } else {
+    window._scWidget.setVolume(0);
+    document.getElementById('scBtn').innerHTML = '&#9834; Silencio';
+    scMuted = true;
+  }
+}
+</script>
+
 </body></html>
